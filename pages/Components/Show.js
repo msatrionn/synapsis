@@ -32,7 +32,7 @@ const Show = () => {
 
   useEffect(() => {
     showDatas();
-    const timeOut = setTimeout(() => setShowMap(true), 500);
+    const timeOut = setTimeout(() => setShowMap(true), showDatas());
     return () => clearTimeout(timeOut);
   }, []);
 
@@ -88,6 +88,7 @@ const Show = () => {
       firstName != "" &&
       lastName != "" &&
       email != "" &&
+      email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) &&
       phone != "" &&
       address != ""
     ) {
@@ -102,7 +103,7 @@ const Show = () => {
             setShowMap(true);
             showDatas();
             result.json(200, "success");
-          }, 500);
+          }, 200);
         })
         .catch(err => {
           console.log(err);
@@ -124,7 +125,7 @@ const Show = () => {
           setShowMap(true);
           showDatas();
           result.json(200, "success");
-        }, 500);
+        }, 200);
       })
       .catch(err => {
         console.log(err);
@@ -154,6 +155,7 @@ const Show = () => {
       firstName != "" &&
       lastName != "" &&
       email != "" &&
+      email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) &&
       phone != "" &&
       address != ""
     ) {
@@ -172,7 +174,7 @@ const Show = () => {
             setShowMap(true);
             showDatas();
             result.json(200, "success");
-          }, 500);
+          }, 200);
         })
         .catch(err => {
           console.log("====================================");
@@ -408,7 +410,7 @@ const Show = () => {
                     </td>
                     <td className="border-grey-light border hover:bg-gray-100 p-3">
                       <button
-                        className="px-4 py-1 text-sm text-white bg-blue-400 rounded"
+                        className="px-4 py-1 text-sm text-white bg-blue-400 rounded mr-1"
                         onClick={() => handleEditGetDetails(item)}
                       >
                         Edit
